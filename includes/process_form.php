@@ -40,10 +40,11 @@ if (isset($_POST['fullname']) && $_POST['fullname'] != '') {
     $errors['fullname'] = 'Please enter your full name!';
 }
 
+$u = '';
 if (isset($_POST['unit']) && $_POST['unit'] != '') {
     $u = strip_tags(trim($_POST['unit']));
 } else {
-    $errors['unit'] = 'Please enter your unit number!';
+   // $errors['unit'] = 'Please enter your unit number!';
 }
 
 if (isset($_POST['street_no']) && $_POST['street_no'] != '') {
