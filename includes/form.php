@@ -176,15 +176,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Unit Number
-                                                   <!-- <span class="required">
+                                                    <!--<span class="required">
                                                         *
                                                     </span>-->
                                                 </label>
                                                 <div class="col-md-4">
                                                     <input type="text" class="form-control" name="unit"/>
-                                                    <!--<span class="help-block">
+                                                    <span class="help-block">
                                                         Provide your unit number
-                                                    </span>-->
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="form-group">

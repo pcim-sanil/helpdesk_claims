@@ -37,10 +37,10 @@ var FormWizard = function () {
                     fullname: {
                         required: true
                     },
-                    /*unit: {
+                    unit: {
                         digits: true,
-                        required: true
-                    },*/
+                      //  required: true
+                    },
                     street_no: {
                         required: true
                     },

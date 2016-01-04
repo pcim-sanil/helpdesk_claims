@@ -1,14 +1,9 @@
 <?php
-
-//if (!defined('LIVE'))
-    DEFINE('LIVE', false);
-
-// Errors are emailed here:
+DEFINE('LIVE', false);
 DEFINE('CONTACT_EMAIL', 'info@pcim.com.au');
-
-define('BASE_URI', __DIR__.'/../');
-define('BASE_URL', '');
-define('MYSQL', BASE_URI . 'mysql.inc.php');
+DEFINE('BASE_URI', '/var/www/html/helpdesk_claims/');
+DEFINE('BASE_URL', 'http://192.168.0.120/helpdesk_claims/');
+DEFINE('MYSQL', BASE_URI . 'mysql.inc.php');
 
 function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 

@@ -5,6 +5,7 @@ require(MYSQL);
 
 $errors = array();
 $c = '';
+$u = '';
 
 if (isset($_POST['mobile']) && $_POST['mobile'] != '' && preg_match("/^[0-9]+$/", $_POST['mobile'])) {
     $m = strip_tags(trim($_POST['mobile']));
@@ -40,11 +41,10 @@ if (isset($_POST['fullname']) && $_POST['fullname'] != '') {
     $errors['fullname'] = 'Please enter your full name!';
 }
 
-$u = '';
 if (isset($_POST['unit']) && $_POST['unit'] != '') {
     $u = strip_tags(trim($_POST['unit']));
 } else {
-   // $errors['unit'] = 'Please enter your unit number!';
+  //  $errors['unit'] = 'Please enter your unit number!';
 }
 
 if (isset($_POST['street_no']) && $_POST['street_no'] != '') {
@@ -88,8 +88,8 @@ if (empty($errors)) { // OK to proceed!
     $q = "INSERT INTO claims (mobile, amount, fullname, unit, street_no, street, suburb, state, postcode, ticket_id, created_date) VALUES ('$m', $a , '$f', '$u', '$s', '$st', '$su', '$sta','$p', $t, now())";
     $r = mysql_query($q);
 
-    $query = "INSERT INTO refund_cheque(name,amount_eligible,amount_agreed,unit,street_no,street,suburb,state,postcode,status,created_date,updated_date,ticket_id,mobile,sms_service_short_code_id)
-VALUES ('$f', $e, $a, '$u', '$s', '$st', '$su', '$sta','$p', 1,now(), now(), $t, $m, $ad)";
+    $query = "INSERT INTO refund_cheque(name,amount_eligible,amount_agreed,unit,street_no,street,suburb,state,postcode,status,created_date,updated_date,ticket_id,mobile,sms_service_short_code_id, refund_source)
+VALUES ('$f', $e, $a, '$u', '$s', '$st', '$su', '$sta','$p', 1,now(), now(), $t, $m, $ad, 'claims')";
     $r = mysql_query($query);
 
     $que = "UPDATE tickets SET status='3' WHERE ticket_id='$t'";
