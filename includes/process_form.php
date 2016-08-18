@@ -102,10 +102,8 @@ VALUES ('$f', $e, $a, '$u', '$s', '$st', '$su', '$sta','$p', 1,now(), now(), $t,
     /**
      * mark email has claimed;
      */
-
-    $q                = "SELECT caller_number,eligible_amount,propose_amount,ticket_id, created_date, claimed_on from email where userkey = $id ";
     
-    $markclaimedquery = "UPDATE email SET claimed_on='" . date('Y-m-d H:i:s') . "' WHERE userkey=" . $_SESSION['id'];
+    $markclaimedquery = "UPDATE email SET claimed_on='" . date('Y-m-d H:i:s') . "' WHERE userkey='" . $_SESSION['id']."'";
     $resmarkedclaim   = mysql_query($markclaimedquery);
 
     // Clear $_POST:

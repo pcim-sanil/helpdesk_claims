@@ -10,6 +10,7 @@ DEFINE('DB_NAME', '1300');
 $link = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD) or die("Couldn't make connection.");
 $dbc = mysql_select_db(DB_NAME, $link) or die("Couldn't select database.");
 
+session_start();
 // Set the character set:
 //mysql_set_charset($dbc, 'utf8');
 
