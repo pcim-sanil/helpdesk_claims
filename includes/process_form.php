@@ -1,17 +1,20 @@
 <?php
-require('config.inc.php');
-require(MYSQL);
+require 'config.inc.php';
+require MYSQL;
 
+if (!isset($_SESSION['id'])) {
+    exit('Sorry! your session has expired!');
+}
 
 $errors = array();
-$c = '';
-$u = '';
+$c      = '';
+$u      = '';
 
 if (isset($_POST['mobile']) && $_POST['mobile'] != '' && preg_match("/^[0-9]+$/", $_POST['mobile'])) {
     $m = strip_tags(trim($_POST['mobile']));
-    if(!preg_match("/^61[0-9]+/", $_POST['mobile'])){
+    if (!preg_match("/^61[0-9]+/", $_POST['mobile'])) {
         $m = ltrim($m, '/\0/');
-        $m = '61'.$m;
+        $m = '61' . $m;
     }
 } else {
     $errors['mobile'] = 'Please enter a valid mobile number!';
@@ -44,7 +47,7 @@ if (isset($_POST['fullname']) && $_POST['fullname'] != '') {
 if (isset($_POST['unit']) && $_POST['unit'] != '') {
     $u = strip_tags(trim($_POST['unit']));
 } else {
-  //  $errors['unit'] = 'Please enter your unit number!';
+    //  $errors['unit'] = 'Please enter your unit number!';
 }
 
 if (isset($_POST['street_no']) && $_POST['street_no'] != '') {
@@ -83,7 +86,8 @@ if (isset($_POST['sms_service_short_code_id']) && $_POST['sms_service_short_code
     $errors['sms_service_short_code_id'] = 'Please select advertised name !';
 }
 
-if (empty($errors)) { // OK to proceed!
+if (empty($errors)) {
+    // OK to proceed!
     // Add the page to the database:
     $q = "INSERT INTO claims (mobile, amount, fullname, unit, street_no, street, suburb, state, postcode, ticket_id, created_date) VALUES ('$m', $a , '$f', '$u', '$s', '$st', '$su', '$sta','$p', $t, now())";
     $r = mysql_query($q);
@@ -95,8 +99,17 @@ VALUES ('$f', $e, $a, '$u', '$s', '$st', '$su', '$sta','$p', 1,now(), now(), $t,
     $que = "UPDATE tickets SET status='3' WHERE ticket_id='$t'";
     $ret = mysql_query($que);
 
+    /**
+     * mark email has claimed;
+     */
+
+    $q                = "SELECT caller_number,eligible_amount,propose_amount,ticket_id, created_date, claimed_on from email where userkey = $id ";
+    
+    $markclaimedquery = "UPDATE email SET claimed_on='" . date('Y-m-d H:i:s') . "' WHERE userkey=" . $_SESSION['id'];
+    $resmarkedclaim   = mysql_query($markclaimedquery);
+
     // Clear $_POST:
     $_POST = array();
-    
+
     echo true;
 }
