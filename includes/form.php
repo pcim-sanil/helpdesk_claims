@@ -110,10 +110,10 @@
                                             </div>
 
                                             <?php
-                                            $advertisedNames = Utility::getAdvertisedNameList($row['ticket_id']);
+$advertisedNames = Utility::getAdvertisedNameList($row['ticket_id']);
 
-                                            if (count($advertisedNames) > 1):
-                                                ?>
+if (count($advertisedNames) > 1):
+?>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Advertised Name
                                                         <span class="required">
@@ -123,9 +123,9 @@
                                                     <div class="col-md-4">
                                                         <select class="form-control" name="sms_service_short_code_id" required="required">
                                                             <option value="">Select Advertised name</option>
-                                                            <?php foreach ($advertisedNames as $key => $value) : ?>
+                                                            <?php foreach ($advertisedNames as $key => $value): ?>
                                                                 <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                                                            <?php endforeach; ?>
+                                                            <?php endforeach;?>
                                                         </select>
                                                         <span class="help-block">
                                                             Select Advertised Name
@@ -133,15 +133,15 @@
                                                     </div>
                                                 </div>
                                                 <?php
-                                            else :
-                                                $default_sms_short_code = '';
-                                                $sms_short_code = array_keys($advertisedNames);
-                                                if (isset($sms_short_code[0])) {
-                                                    $default_sms_short_code = $sms_short_code[0];
-                                                }
-                                                ?>
-                                                <input type="hidden" name="sms_service_short_code_id" value="<?php echo $default_sms_short_code; ?>"/>
-                                            <?php endif; ?>
+else:
+    $default_sms_short_code = '';
+    $sms_short_code         = array_keys($advertisedNames);
+    if (isset($sms_short_code[0])) {
+        $default_sms_short_code = $sms_short_code[0];
+    }
+    ?>
+                                                    <input type="hidden" name="sms_service_short_code_id" value="<?php echo $default_sms_short_code; ?>"/>
+                                                <?php endif;?>
 
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Agreement
@@ -156,7 +156,7 @@
                                                     </div>
                                                     <div id="form_agreement_error">
                                                     </div>
-                                                </div>            
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="tab2">
@@ -201,7 +201,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Street
+                                                <label class="control-label col-md-3">Street Name
                                                     <span class="required">
                                                         *
                                                     </span>
@@ -209,10 +209,69 @@
                                                 <div class="col-md-4">
                                                     <input type="text" class="form-control" name="street"/>
                                                     <span class="help-block">
-                                                        Provide your street
+                                                        Provide your street name
                                                     </span>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Street Type
+                                                    <span class="required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <script>
+                                                 function show_street_type(street_type){
+                                                    if(street_type=='Other'){
+                                                        $('select.street_type_dropdown').attr('name','');
+                                                        $('p#street_type_extra').html('<input type="text" class="form-control" name="street_type"/>');
+                                                    } else {
+                                                        $('select.street_type_dropdown').attr('name','street_type');
+                                                        $('p#street_type_extra').html('');
+                                                    }
+                                                 }
+                                                </script>
+                                                <div class="col-md-4">
+                                                    <select class="form-control street_type_dropdown" name="street_type" onchange="show_street_type(this.value)">
+                                                        <option value="">Select</option>
+                                                        <option value="Alley">Alley</option>
+                                                        <option value="Arcade">Arcade</option>
+                                                        <option value="Avenue">Avenue</option>
+                                                        <option value="Boulevard">Boulevard</option>
+                                                        <option value="Bypass">Bypass</option>
+                                                        <option value="Circuit">Circuit</option>
+                                                        <option value="Close">Close</option>
+                                                        <option value="Corner">Corner</option>
+                                                        <option value="Court">Court</option>
+                                                        <option value="Crescent">Crescent</option>
+                                                        <option value="Cul-de-sac">Cul-de-sac</option>
+                                                        <option value="Drive">Drive</option>
+                                                        <option value="Esplanade">Esplanade</option>
+                                                        <option value="Green">Green</option>
+                                                        <option value="Grove">Grove</option>
+                                                        <option value="Highway">Highway</option>
+                                                        <option value="Junction">Junction</option>
+                                                        <option value="Lane">Lane</option>
+                                                        <option value="Link">Link</option>
+                                                        <option value="Mews">Mews</option>
+                                                        <option value="Parade">Parade</option>
+                                                        <option value="Place">Place</option>
+                                                        <option value="Ridge">Ridge</option>
+                                                        <option value="Road">Road</option>
+                                                        <option value="Square">Square</option>
+                                                        <option value="Street">Street</option>
+                                                        <option value="Terrace">Terrace</option>
+                                                        <option value=" ">N/A</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                    <p id="street_type_extra"></p>
+                                                    <span class="help-block">
+                                                        Provide your street type
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Suburb
                                                     <span class="required">
@@ -222,7 +281,7 @@
                                                 <div class="col-md-4">
                                                     <input type="text" class="form-control" name="suburb"/>
                                                     <span class="help-block">
-                                                        Provide your suburb														</span>
+                                                        Provide your suburb                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -232,7 +291,15 @@
                                                     </span>
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="state"/>
+                                                    <select class="form-control" name="state">
+                                                        <option value="">Select</option>
+                                                        <option value="NSW">NSW</option>
+                                                        <option value="QLD">QLD</option>
+                                                        <option value="SA">SA</option>
+                                                        <option value="TAS">TAS</option>
+                                                        <option value="VIC">VIC</option>
+                                                        <option value="WA">WA</option>
+                                                    </select>
                                                     <span class="help-block">
                                                         Provide your state</span>
                                                 </div>
@@ -248,7 +315,7 @@
                                                     <span class="help-block">
                                                         Provide your post code</span>
                                                 </div>
-                                            </div>                                            
+                                            </div>
 
                                         </div>
                                         <div class="tab-pane" id="tab3">
@@ -300,7 +367,9 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Street</label>
                                                 <div class="col-md-4">
-                                                    <p class="form-control-static" data-display="street" id="street">
+                                                    <p>
+                                                        <span class="form-control-static" data-display="street" id="street"></span> 
+                                                        <span class="form-control-static" data-display="street_type" id="street_type"></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -325,7 +394,6 @@
                                                     </p>
                                                 </div>
                                             </div>
-
 
 
                                         </div>

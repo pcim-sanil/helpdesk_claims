@@ -47,6 +47,10 @@ var FormWizard = function () {
                     street: {
                         required: true
                     },
+                    street_type: {
+                        required: true,
+                        minlength: 1
+                    },
                     suburb: {
                         required: true
                     },
@@ -110,12 +114,14 @@ var FormWizard = function () {
                     if (input.is(":text") || input.is("textarea")) {
                         $(this).html(input.val());
                     } else if (input.is("select")) {
-                        $(this).html(input.find('option:selected').text());
+                        $(this).html(input.find('option:selected').val());
                     } else if (input.is(":radio") && input.is(":checked")) {
                         $(this).html(input.attr("data-title"));
                     } else if ($(this).attr("data-display") == 'agreement') {
                         $(this).html(input.attr("data-title"));
                     }
+
+                    console.log( $(this).attr("data-display"));
                 });
             }
 

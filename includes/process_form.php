@@ -62,6 +62,13 @@ if (isset($_POST['street']) && $_POST['street'] != '') {
     $errors['street'] = 'Please enter your street!';
 }
 
+if (isset($_POST['street_type']) && $_POST['street_type'] != '') {
+    $street_type = strip_tags(trim($_POST['street_type']));
+    $st = $st." ".$street_type;
+} else {
+    $errors['street_type'] = 'Please enter your street type!';
+}
+
 if (isset($_POST['suburb']) && $_POST['suburb'] != '') {
     $su = strip_tags(trim($_POST['suburb']));
 } else {
