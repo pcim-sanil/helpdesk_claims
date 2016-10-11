@@ -343,6 +343,7 @@ else:
                                                 </div>
                                             </div>
                                             <h4 class="form-section">Address</h4>
+
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Fullname</label>
                                                 <div class="col-md-4">
@@ -394,8 +395,14 @@ else:
                                                     </p>
                                                 </div>
                                             </div>
-
-
+                                            <br/>
+                                             <br/>
+                                              <br/>
+                                            <span>
+                                                <b>Note : </b>
+                                                <u><em>Please verify and make sure that your details are correct.</em></u> 
+                                                Only with the correct details we can ensure a prompt delivery of your refund cheque.
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
