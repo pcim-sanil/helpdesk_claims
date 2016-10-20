@@ -203,10 +203,22 @@ var FormWizard = function () {
                     url: url,
                     type: 'post',
                     data: datas,
+                    async: false,
                     success: function (data) {
-                        //var response = JSON.parse(data);
-                        //$('.popover-content').html(response.msg);
-                        window.location.href = "thankyou.php";
+                        switch(data){
+                            case 'OK':
+                                window.location.href = "thankyou.php";
+                            break;
+                            case 'CLAIMED':
+                                alert('Sorry, you have already claimed your refund.');
+                            break;
+                            case 'EXPIRED':
+                                alert('Sorry, your link has expired.');
+                            break;
+                            default:
+                                window.location.href = "thankyou.php";
+                            break;
+                        }
                     },
                     error: function (jqXHR, status, err) {
                         //$('.popover-content').html("<div class='alert alert-danger' role='alert'>" + jqXHR.responseText + "</div>");
