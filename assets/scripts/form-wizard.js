@@ -35,24 +35,29 @@ var FormWizard = function () {
                         required: true
                     },
                     fullname: {
-                        required: true
+                        required: true,
+			maxlength: 35
                     },
                     unit: {
                         digits: true,
+			maxlength: 35
                       //  required: true
                     },
                     street_no: {
-                        required: true
+                        required: true,
+			maxlength: 35
                     },
                     street: {
-                        required: true
+                        required: true,
+			maxlength: 80
                     },
                     street_type: {
                         required: true,
                         minlength: 1
                     },
                     suburb: {
-                        required: true
+                        required: true,
+			maxlength: 80
                     },
                     state: {
                         required: true
@@ -60,7 +65,8 @@ var FormWizard = function () {
                     postcode: {
                         digits: true,
                         required: true,
-                        minlength: 3
+                        minlength: 3,
+			maxlength: 35
                     },
                     'agreement': {
                         required: true,

@@ -168,7 +168,7 @@ else:
                                                     </span>
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="fullname"/>
+                                                    <input type="text" class="form-control" name="fullname" maxlength="35"/>
                                                     <span class="help-block">
                                                         Please make sure your name is spelled exactly the same as it is in your bank account.
                                                     </span>
@@ -181,7 +181,7 @@ else:
                                                     </span>-->
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="unit"/>
+                                                    <input type="text" class="form-control" name="unit" maxlength="50"/>
                                                     <span class="help-block">
                                                         Provide your unit number
                                                     </span>
@@ -194,7 +194,7 @@ else:
                                                     </span>
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="street_no"/>
+                                                    <input type="text" class="form-control" name="street_no" maxlength="50"/>
                                                     <span class="help-block">
                                                         Provide your street number
                                                     </span>
@@ -207,7 +207,7 @@ else:
                                                     </span>
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="street"/>
+                                                    <input type="text" class="form-control" name="street" maxlength="80"/>
                                                     <span class="help-block">
                                                         Provide your street name
                                                     </span>
@@ -279,7 +279,7 @@ else:
                                                     </span>
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="suburb"/>
+                                                    <input type="text" class="form-control" name="suburb" maxlength="80"/>
                                                     <span class="help-block">
                                                         Provide your suburb                                                     </span>
                                                 </div>
@@ -294,11 +294,13 @@ else:
                                                     <select class="form-control" name="state">
                                                         <option value="">Select</option>
                                                         <option value="NSW">NSW</option>
+							<option value="NT">NT</option>
                                                         <option value="QLD">QLD</option>
                                                         <option value="SA">SA</option>
                                                         <option value="TAS">TAS</option>
                                                         <option value="VIC">VIC</option>
                                                         <option value="WA">WA</option>
+ 							<option value="ACT">ACT</option>
                                                     </select>
                                                     <span class="help-block">
                                                         Provide your state</span>
@@ -311,7 +313,7 @@ else:
                                                     </span>
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="postcode"/>
+                                                    <input type="text" class="form-control" name="postcode" maxlength="35"/>
                                                     <span class="help-block">
                                                         Provide your post code</span>
                                                 </div>
